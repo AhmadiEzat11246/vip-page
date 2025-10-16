@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>VIP Page</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fafafa;
+      text-align: center;
+      margin-top: 100px;
+    }
+    .vip-box {
+      border: 2px solid #333;
+      padding: 20px;
+      display: inline-block;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="vip-box">
+    <h1 id="welcome"></h1>
+    <p id="details"></p>
+  </div>
+
+  <script>
+    // Read the query parameters from the URL
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name");
+    const id = params.get("id");
+
+    // Display them on the page
+    if (name && id) {
+      document.getElementById("welcome").textContent = "Welcome, VIP " + name + "!";
+      document.getElementById("details").textContent = "Your ID is: " + id;
+    } else {
+      document.getElementById("welcome").textContent = "No data received.";
+    }
+  </script>
+</body>
+</html>
