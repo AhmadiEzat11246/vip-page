@@ -223,11 +223,11 @@
   <div class="contact-form">
     <h2>URL Parameters</h2>
     <form>
-      <label for="vipname">VIP Name</label>
-      <input type="text" id="vipname" name="vipname" required>
+      <label for="MachineName">Machine Name</label>
+      <input type="text" id="MachineName" name="MachineName" required>
 
-      <label for="vipid">VIP ID</label>
-      <input type="text" id="vipid" name="vipid" required>
+      <label for="MachineID">Machine ID</label>
+      <input type="text" id="MachineID" name="MachineID" required>
     </form>
   </div>
     <div class="contact-info">
@@ -257,11 +257,11 @@
 
   // Fill VIP fields if parameters exist
   document.addEventListener("DOMContentLoaded", () => {
-      const vipName = getParameterByName('vipname');
-      const vipId = getParameterByName('vipid');
+      const vipName = getParameterByName('MachineName');
+      const vipId = getParameterByName('MachineID');
 
-      if (vipName) document.getElementById('vipname').value = vipName;
-      if (vipId) document.getElementById('vipid').value = vipId;
+      if (vipName) document.getElementById('MachineName').value = vipName;
+      if (vipId) document.getElementById('MachineID').value = vipId;
   });
 </script>
 </html>
