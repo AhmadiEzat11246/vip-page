@@ -41,7 +41,7 @@
   </style>
 </head>
 <body>
-  <h1> Machine Malfunction Logs</h1>
+  <h1>Machine Malfunction Logs</h1>
   <table id="logTable">
     <thead>
       <tr>
@@ -54,6 +54,7 @@
         <th>Vorname</th>
         <th>Nachname</th>
         <th>Email</th>
+        <th>Telefon</th>
         <th>Company</th>
         <th>Message</th>
       </tr>
@@ -82,6 +83,7 @@
             <td>${log.contact?.Vorname || ''}</td>
             <td>${log.contact?.Nachname || ''}</td>
             <td>${log.contact?.Email || ''}</td>
+            <td>${log.contact?.Telefon || ''}</td>
             <td>${log.contact?.Unternehmen || ''}</td>
             <td>${log.contact?.Nachricht || ''}</td>
           `;
