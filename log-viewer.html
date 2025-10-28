@@ -6,14 +6,13 @@
   <title>BMS Log Viewer</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
       background-color: #f5f7fb;
       color: #333;
-      margin: 0;
-      padding: 0;
     }
 
-    /* Header styling */
+    /* Header same as BMS main page */
     header {
       display: flex;
       justify-content: space-between;
@@ -33,28 +32,33 @@
     }
 
     .logo-area img {
-      height: 45px;
+      height: 40px; /* same size as BMS HTML */
     }
 
-    .logo-text {
-      font-size: 1.1rem;
+    .logo-area h3 {
       color: #3948B1;
+      margin: 0;
+      font-size: 1.1rem;
       font-weight: 600;
       letter-spacing: 0.5px;
     }
 
+    /* Page title */
     h1 {
       text-align: center;
       color: #3948B1;
-      margin-top: 1.5rem;
+      margin-top: 2rem;
     }
 
+    /* Table styling */
     table {
       width: 95%;
       margin: 2rem auto;
       border-collapse: collapse;
       background: white;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
     }
 
     th, td {
@@ -79,11 +83,12 @@
   </style>
 </head>
 <body>
-  <!-- Header with logo and text -->
+
+  <!-- Header identical to BMS Contact Page -->
   <header>
     <div class="logo-area">
       <img src="bms-logo.png" alt="BMS Logo">
-      <span class="logo-text">END OF LINE PACKAGING EXPERTS</span>
+      <h3>END OF LINE PACKAGING EXPERTS</h3>
     </div>
   </header>
 
