@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -150,3 +151,157 @@
   </script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BMS Log Viewer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      background-color: #f5f7fb;
+      color: #333;
+    }
+
+    /* Header same as BMS main page */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-area img {
+      height: 40px; /* same size as BMS HTML */
+    }
+
+    .logo-area h3 {
+      color: #3948B1;
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* Page title */
+    h1 {
+      text-align: center;
+      color: #3948B1;
+      margin-top: 2rem;
+    }
+
+    /* Table styling */
+    table {
+      width: 95%;
+      margin: 2rem auto;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 0.8rem;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #3948B1;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .timestamp {
+      font-size: 0.85rem;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header identical to BMS Contact Page -->
+  <header>
+    <div class="logo-area">
+      <img src="bms-logo.png" alt="BMS Logo">
+      <h3>END OF LINE PACKAGING EXPERTS</h3>
+    </div>
+  </header>
+
+  <h1>Machine Malfunction Logs</h1>
+
+  <table id="logTable">
+    <thead>
+      <tr>
+        <th>Timestamp</th>
+        <th>Machine Name</th>
+        <th>Machine ID</th>
+        <th>Error Code</th>
+        <th>Error Text</th>
+        <th>Production Line</th>
+        <th>Vorname</th>
+        <th>Nachname</th>
+        <th>Email</th>
+        <th>Telefon</th>
+        <th>Company</th>
+        <th>Message</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    async function loadLogs() {
+      try {
+        const response = await fetch('http://localhost:3000/logs');
+        const logs = await response.json();
+
+        const tbody = document.querySelector('#logTable tbody');
+        tbody.innerHTML = '';
+
+        logs.reverse().forEach(log => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td class="timestamp">${new Date(log.timestamp).toLocaleString()}</td>
+            <td>${log.machine?.MachineName || ''}</td>
+            <td>${log.machine?.MachineID || ''}</td>
+            <td>${log.machine?.ErrorCode || ''}</td>
+            <td>${log.machine?.ErrorText || ''}</td>
+            <td>${log.machine?.ProLine || ''}</td>
+            <td>${log.contact?.Vorname || ''}</td>
+            <td>${log.contact?.Nachname || ''}</td>
+            <td>${log.contact?.Email || ''}</td>
+            <td>${log.contact?.Telefon || ''}</td>
+            <td>${log.contact?.Unternehmen || ''}</td>
+            <td>${log.contact?.Nachricht || ''}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      } catch (err) {
+        alert("Error loading logs: " + err.message);
+      }
+    }
+
+    loadLogs();
+  </script>
+</body>
+</html>
+>>>>>>> 0df234e3c96f4022bf0a23291ee8d06a7efc6c05
