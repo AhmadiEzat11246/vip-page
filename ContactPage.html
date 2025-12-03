@@ -296,6 +296,8 @@
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get(name);
     }
+    // we keep HMAC in a variable, not in a visible input
+    let hmacFromQr = null;
 
     document.addEventListener("DOMContentLoaded", () => {
       const fields = ['MachineName', 'MachineID', 'ErrorCode', 'ErrorText', 'ProLine'];
@@ -306,6 +308,10 @@
           if (input) input.value = value;
         }
       });
+
+      // read HMAC from URL but do NOT show it
+      hmacFromQr = getParameterByName('HMAC');
+
     });
 
     const contactForm = document.querySelectorAll('.contact-form form')[0];
@@ -326,7 +332,8 @@
         MachineID: document.getElementById('MachineID').value,
         ErrorCode: document.getElementById('ErrorCode').value,
         ErrorText: document.getElementById('ErrorText').value,
-        ProLine: document.getElementById('ProLine').value
+        ProLine: document.getElementById('ProLine').value,
+        HMAC: hmacFromQr   //  include HMAC in the payload, but not in the UI
       };
 
       const fullData = { contact: contactData, machine: machineData };
